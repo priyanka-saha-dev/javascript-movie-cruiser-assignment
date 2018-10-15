@@ -1,4 +1,5 @@
 var globalMovieList = [];
+var globalFavMovieList = [];
 
 function getMovies() {
 
@@ -58,8 +59,22 @@ function getFavourites() {
 function parseListOfAllFavourites(listOfFavs) {
 
 	document.getElementById('favouritesList').innerHTML = '';
+	globalFavMovieList = [];
+
 	if (Array.isArray(listOfFavs)) {
 		listOfFavs.forEach(element => {
+			globalFavMovieList.push(element);
+		})
+	}
+
+	displayFavourites();
+}
+
+function displayFavourites() {
+
+	document.getElementById('favouritesList').innerHTML = '';
+	if (Array.isArray(globalFavMovieList)) {
+		globalFavMovieList.forEach(element => {
 
 			let innerContent = `
 				<li id='${element.id}'>
@@ -78,35 +93,41 @@ function addFavourite(movieID) {
 
 	let selectedMovie;
 
-	if(movieID) {
+	if (movieID) {
 		selectedMovie = globalMovieList.find(element => {
-			//console.log(`Movie ID = ${element.id}`);
 			return element.id === movieID;
 		});
+
+		//globalFavMovieList.push(selectedMovie);
 	}
 
 	// console.log('selectedMovie : ');
 	// console.log(JSON.stringify(selectedMovie));
 
 	let favDataAddPromise = fetch('http://localhost:3000/favourites', {
+		mode: 'cors',
 		method: 'POST',
 		body: JSON.stringify(selectedMovie),
 		headers: {
 			'Content-Type': 'application/json',
 			'Accept': 'application/json'
 		}
-	}).then((res) => {
-		if(res.ok) {
-			console.log(`Movie is successfully added to favourites`)
-			res.json();
-		} else {
-			throw new Error(`Movie is already added to favourites`);
-		}
-	});
+	})
+	.then((response) => response.json())
+	.then((favItem) => {
+		globalFavMovieList.push(favItem);
 
-	favDataAddPromise
-	.then(getFavourites)
-	.catch(parseError);
+		// console.log('globalFavMovieList : ');
+		// console.log(globalFavMovieList);
+
+		displayFavourites();
+		return globalFavMovieList;
+	})
+	.catch((error) => {
+		let message = `Movie is already added to favourites`;
+		console.log(message);
+		Promise.reject(new Error(message));
+	});
 
 	return favDataAddPromise;
 }

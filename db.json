@@ -51,16 +51,22 @@
       "posterPath": "./public/js/image02.jpg"
     },
     {
+      "id": "04",
+      "title": "Movie 04",
+      "description": "Movie Description 04",
+      "posterPath": "./public/js/image04.jpg"
+    },
+    {
       "id": "03",
       "title": "Movie 03",
       "description": "Movie Description 03",
       "posterPath": "./public/js/image03.jpg"
     },
     {
-      "id": "04",
-      "title": "Movie 04",
-      "description": "Movie Description 04",
-      "posterPath": "./public/js/image04.jpg"
+      "id": "06",
+      "title": "Movie 06",
+      "description": "Movie Description 06",
+      "posterPath": "./public/js/image06.jpg"
     }
   ]
 }
