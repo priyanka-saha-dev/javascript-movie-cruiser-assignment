@@ -14,8 +14,8 @@ function getMovies() {
 }
 
 function parseError(error) {
-	console.log('Error occured');
-	console.log(error);
+	//console.log('Error occured');
+	console.log(error.message);
 }
 
 function parseListOfAllMovies(listOfMovies) {
@@ -29,7 +29,7 @@ function parseListOfAllMovies(listOfMovies) {
 
 			let innerContent = `
 				<li id='${element.id}'>
-					<span>${element.name}</span>
+					<span>${element.title}</span>
 					<button id='addMovieButton' type='button' class='btn btn-link' value='${element.id}' onclick="addFavourite('${element.id}')">
 						Add to Fav
 					</button>
@@ -63,7 +63,7 @@ function parseListOfAllFavourites(listOfFavs) {
 
 			let innerContent = `
 				<li id='${element.id}'>
-					<span>${element.name}</span>
+					<span>${element.title}</span>
 					<button id='removeMovieButton' type='button' class='btn btn-link' value='${element.id}'>Remove</button>
 				</li>
 			`;
@@ -95,10 +95,13 @@ function addFavourite(movieID) {
 			'Content-Type': 'application/json',
 			'Accept': 'application/json'
 		}
-	}).then((res) => res.json())
-	.catch(function(error) {
-		console.log(`error in POST`);
-		console.log(`${error}`);
+	}).then((res) => {
+		if(res.ok) {
+			console.log(`Movie is successfully added to favourites`)
+			res.json();
+		} else {
+			throw new Error(`Movie is already added to favourites`);
+		}
 	});
 
 	favDataAddPromise
