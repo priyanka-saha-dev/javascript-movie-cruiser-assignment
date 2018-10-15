@@ -1,6 +1,42 @@
 {
   "movies": [
+    {
+      "id": "01",
+      "name": "Movie 01",
+      "description": "Movie Description 01",
+      "imageSrc": "./public/js/image01.jpg"
+    },
+    {
+      "id": "02",
+      "name": "Movie 02",
+      "description": "Movie Description 02",
+      "imageSrc": "./public/js/image02.jpg"
+    },
+    {
+      "id": "03",
+      "name": "Movie 03",
+      "description": "Movie Description 03",
+      "imageSrc": "./public/js/image03.jpg"
+    }
   ],
   "favourites": [
+    {
+      "id": "01",
+      "name": "Movie 01",
+      "description": "Movie Description 01",
+      "imageSrc": "./public/js/image01.jpg"
+    },
+    {
+      "id": "03",
+      "name": "Movie 03",
+      "description": "Movie Description 03",
+      "imageSrc": "./public/js/image03.jpg"
+    },
+    {
+      "id": "02",
+      "name": "Movie 02",
+      "description": "Movie Description 02",
+      "imageSrc": "./public/js/image02.jpg"
+    }
   ]
 }
