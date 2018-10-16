@@ -1,9 +1,12 @@
 var globalMovieList = [];
 var globalFavMovieList = [];
+var errorMsg = `Movie is already added to favourites`;
+var movieAPI_url = 'http://localhost:3000/movies';
+var favuoriteAPI_url = 'http://localhost:3000/favourites';
 
 function getMovies() {
 
-	let movieDataPromise = fetch('http://localhost:3000/movies', {
+	let movieDataPromise = fetch(movieAPI_url, {
 		method: 'get'
 	}).then(response => response.json());
 
@@ -44,7 +47,7 @@ function parseListOfAllMovies(listOfMovies) {
 
 function getFavourites() {
 
-	let favDataPromise = fetch('http://localhost:3000/favourites', {
+	let favDataPromise = fetch(favuoriteAPI_url, {
 		method: 'get'
 	}).then(response => response.json());
 
@@ -97,14 +100,9 @@ function addFavourite(movieID) {
 		selectedMovie = globalMovieList.find(element => {
 			return element.id === movieID;
 		});
-
-		//globalFavMovieList.push(selectedMovie);
 	}
 
-	// console.log('selectedMovie : ');
-	// console.log(JSON.stringify(selectedMovie));
-
-	let favDataAddPromise = fetch('http://localhost:3000/favourites', {
+	let favDataAddPromise = fetch(favuoriteAPI_url, {
 		mode: 'cors',
 		method: 'POST',
 		body: JSON.stringify(selectedMovie),
@@ -116,17 +114,12 @@ function addFavourite(movieID) {
 	.then((response) => response.json())
 	.then((favItem) => {
 		globalFavMovieList.push(favItem);
-
-		// console.log('globalFavMovieList : ');
-		// console.log(globalFavMovieList);
-
 		displayFavourites();
 		return globalFavMovieList;
 	})
 	.catch((error) => {
-		let message = `Movie is already added to favourites`;
-		console.log(message);
-		Promise.reject(new Error(message));
+		console.log(errorMsg);
+		Promise.reject(new Error(errorMsg));
 	});
 
 	return favDataAddPromise;
