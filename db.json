@@ -43,34 +43,5 @@
       "releaseDate": "2012-01-01"
     }
   ],
-  "favourites": [
-    {
-      "voteCount": 0,
-      "id": 444143,
-      "video": false,
-      "voteAverage": 0,
-      "title": "A Unique Movie",
-      "popularity": 2.474547,
-      "posterPath": "../images/A_Unique_Movie.jpg",
-      "originalLanguage": "ko",
-      "originalTitle": "특이점이 온 영화",
-      "adult": false,
-      "overview": "Ep.01 My wife healing ",
-      "releaseDate": "2017-03-07"
-    },
-    {
-      "voteCount": 0,
-      "id": 476307,
-      "video": false,
-      "voteAverage": 0,
-      "title": "The Unique Lama",
-      "popularity": 1,
-      "posterPath": "../images/The_Unique_Lama.jpg",
-      "originalLanguage": "zh",
-      "originalTitle": "Da la ma",
-      "adult": false,
-      "overview": "The Unique Lama is a 1978 Wuxia film from Taiwan",
-      "releaseDate": "1978-09-15"
-    }
-  ]
+  "favourites": []
 }

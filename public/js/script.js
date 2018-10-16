@@ -1,6 +1,7 @@
 var globalMovieList = [];
 var globalFavMovieList = [];
-var errorMsg = `Movie is already added to favourites`;
+var errorMsg1 = `Movie is already added to favourites`;
+var errorMsg2 = `Movie is not present in favourites`;
 var movieAPI_url = 'http://localhost:3000/movies';
 var favuoriteAPI_url = 'http://localhost:3000/favourites';
 
@@ -18,7 +19,7 @@ function getMovies() {
 }
 
 function parseError(error) {
-	//console.log('Error occured');
+	console.log('Error occured');
 	console.log(error.message);
 }
 
@@ -84,7 +85,9 @@ function displayFavourites() {
 			let innerContent = `
 				<li id='${element.id}'>
 					<span>${element.title}</span>
-					<button id='removeMovieButton' type='button' class='btn btn-link' value='${element.id}'>Remove</button>
+					<button id='removeMovieButton' type='button' class='btn btn-link' onclick='removeFavourite(${element.id})'>
+						Remove
+					</button>
 				</li>
 			`;
 
@@ -93,44 +96,38 @@ function displayFavourites() {
 	}
 }
 
-function addFavourite(movieID) {
-	//console.log(`Movie ID = ${movieID}`);
-
-	let selectedMovie;
+function getMovieByID(movieID) {
+	console.log(`Movie ID = ${movieID}`);
 
 	if (movieID) {
 		selectedMovie = globalMovieList.find(element => {
 			return element.id === movieID;
 		});
 
-		// if (selectedMovie) {
-		// 	console.log(`adding movie to fav`)
-		// 	console.log(selectedMovie.id)
-		// }
+		if (selectedMovie) {
+			console.log(`adding movie to fav`)
+			console.log(selectedMovie.id)
+		}
 	}
 
-	// fetch(`${favuoriteAPI_url}/?id=${movieID}`,{
-	// 	method : 'GET'
-	// })
-	// .then(response => response.json())
-	// .then((favData) => {console.log('getfavdata');console.log(favData)})
-	// .catch(parseError);
+	return selectedMovie;
+}
 
+function addFavourite(movieID) {
+	let selectedMovie = getMovieByID(movieID);
 	let isAlreadyPresent = false;
 
 	if (globalFavMovieList) {
 		let foundElement = globalFavMovieList.find(element => {
 			return element.id === movieID;
 		});
-
 		if (foundElement) {
 			isAlreadyPresent = true;
 		}
-
 	}
 
 	if (isAlreadyPresent) {
-		return Promise.reject(new Error(errorMsg));
+		return Promise.reject(new Error(errorMsg1));
 	}
 
 	let favDataAddPromise = fetch(favuoriteAPI_url, {
@@ -149,18 +146,64 @@ function addFavourite(movieID) {
 			displayFavourites();
 			return globalFavMovieList;
 		})
-		.catch((error) => {
-			console.log(errorMsg);
-			Promise.reject(new Error(errorMsg));
-		});
+		.catch(parseError);
 
 	return favDataAddPromise;
+}
+
+function removeFavourite(movieID) {
+	console.log(`Movie ID = ${movieID}`);
+
+	let selectedMovie = getMovieByID(movieID);
+	let isAlreadyPresent = false;
+
+	if (globalFavMovieList) {
+		let foundElement = globalFavMovieList.find(element => {
+			return element.id === movieID;
+		});
+		if (foundElement) {
+			isAlreadyPresent = true;
+		}
+	}
+
+	if (!isAlreadyPresent) {
+		return Promise.reject(new Error(errorMsg2));
+	}
+
+	let favDataDeletePromise = fetch(`${favuoriteAPI_url}/${movieID}`, {
+		method: 'DELETE'
+	})
+		.then((response) => response.json())
+		.then((favItem) => {
+			let itemIndex;
+
+			let found = globalFavMovieList.find((element, position) => {
+				if (element.id === movieID) {
+					itemIndex = position;
+				}
+				return element.id === movieID;
+			});
+			console.log(`index = ${itemIndex}`);
+
+			if (itemIndex && found) {
+				globalFavMovieList.splice(itemIndex, 1);
+				displayFavourites();
+			}
+			
+			return globalFavMovieList;
+		})
+		.catch(parseError);
+
+	return favDataDeletePromise;
+
+
 }
 
 module.exports = {
 	getMovies,
 	getFavourites,
-	addFavourite
+	addFavourite,
+	removeFavourite
 };
 
 // You will get error - Uncaught ReferenceError: module is not defined
