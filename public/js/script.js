@@ -65,7 +65,9 @@ function parseListOfAllFavourites(listOfFavs) {
 	globalFavMovieList = [];
 
 	if (Array.isArray(listOfFavs)) {
+		//console.log(`get all favs - count - ${listOfFavs.length}`);
 		listOfFavs.forEach(element => {
+			//console.log(`movie id in fav - ${element.id} and Name - ${element.title}`)
 			globalFavMovieList.push(element);
 		})
 	}
@@ -100,6 +102,35 @@ function addFavourite(movieID) {
 		selectedMovie = globalMovieList.find(element => {
 			return element.id === movieID;
 		});
+
+		// if (selectedMovie) {
+		// 	console.log(`adding movie to fav`)
+		// 	console.log(selectedMovie.id)
+		// }
+	}
+
+	// fetch(`${favuoriteAPI_url}/?id=${movieID}`,{
+	// 	method : 'GET'
+	// })
+	// .then(response => response.json())
+	// .then((favData) => {console.log('getfavdata');console.log(favData)})
+	// .catch(parseError);
+
+	let isAlreadyPresent = false;
+
+	if (globalFavMovieList) {
+		let foundElement = globalFavMovieList.find(element => {
+			return element.id === movieID;
+		});
+
+		if (foundElement) {
+			isAlreadyPresent = true;
+		}
+
+	}
+
+	if (isAlreadyPresent) {
+		return Promise.reject(new Error(errorMsg));
 	}
 
 	let favDataAddPromise = fetch(favuoriteAPI_url, {
@@ -111,16 +142,17 @@ function addFavourite(movieID) {
 			'Accept': 'application/json'
 		}
 	})
-	.then((response) => response.json())
-	.then((favItem) => {
-		globalFavMovieList.push(favItem);
-		displayFavourites();
-		return globalFavMovieList;
-	})
-	.catch((error) => {
-		console.log(errorMsg);
-		Promise.reject(new Error(errorMsg));
-	});
+		.then((response) => response.json())
+		.then((favItem) => {
+
+			globalFavMovieList.push(favItem);
+			displayFavourites();
+			return globalFavMovieList;
+		})
+		.catch((error) => {
+			console.log(errorMsg);
+			Promise.reject(new Error(errorMsg));
+		});
 
 	return favDataAddPromise;
 }
@@ -135,5 +167,3 @@ module.exports = {
 // while running this script on browser which you shall ignore
 // as this is required for testing purposes and shall not hinder
 // it's normal execution
-
-
