@@ -1,72 +1,76 @@
 {
   "movies": [
     {
-      "id": "01",
-      "title": "Movie 01",
-      "description": "Movie Description 01",
-      "posterPath": "./public/js/image01.jpg"
+      "voteCount": 0,
+      "id": 476307,
+      "video": false,
+      "voteAverage": 0,
+      "title": "The Unique Lama",
+      "popularity": 1,
+      "posterPath": "../images/The_Unique_Lama.jpg",
+      "originalLanguage": "zh",
+      "originalTitle": "Da la ma",
+      "adult": false,
+      "overview": "The Unique Lama is a 1978 Wuxia film from Taiwan",
+      "releaseDate": "1978-09-15"
     },
     {
-      "id": "02",
-      "title": "Movie 02",
-      "description": "Movie Description 02",
-      "posterPath": "./public/js/image02.jpg"
+      "voteCount": 74,
+      "id": 27621,
+      "video": false,
+      "voteAverage": 5,
+      "title": "The Cheetah Girls: One World",
+      "popularity": 5.000945,
+      "posterPath": "../images/The_Cheetah_Girls.jpg",
+      "originalLanguage": "en",
+      "originalTitle": "The Cheetah Girls: One World",
+      "adult": false,
+      "overview": "Chanel, Dorinda, and Aqua, are off to India to star in a Bollywood movie. ",
+      "releaseDate": "2008-08-22"
     },
     {
-      "id": "03",
-      "title": "Movie 03",
-      "description": "Movie Description 03",
-      "posterPath": "./public/js/image03.jpg"
-    },
-    {
-      "id": "04",
-      "title": "Movie 04",
-      "description": "Movie Description 04",
-      "posterPath": "./public/js/image04.jpg"
-    },
-    {
-      "id": "05",
-      "title": "Movie 05",
-      "description": "Movie Description 05",
-      "posterPath": "./public/js/image05.jpg"
-    },
-    {
-      "id": "06",
-      "title": "Movie 06",
-      "description": "Movie Description 06",
-      "posterPath": "./public/js/image06.jpg"
+      "voteCount": 0,
+      "id": 142109,
+      "video": false,
+      "voteAverage": 0,
+      "title": "Unique 8",
+      "popularity": 1.007201,
+      "posterPath": "/images/Unique_8.jpg",
+      "originalLanguage": "en",
+      "originalTitle": "Unique 8",
+      "adult": false,
+      "overview": "We are back with our new 2012 snowboard film release, UNIQUE 8!",
+      "releaseDate": "2012-01-01"
     }
   ],
   "favourites": [
     {
-      "id": "01",
-      "title": "Movie 01",
-      "description": "Movie Description 01",
-      "posterPath": "./public/js/image01.jpg"
+      "voteCount": 0,
+      "id": 444143,
+      "video": false,
+      "voteAverage": 0,
+      "title": "A Unique Movie",
+      "popularity": 2.474547,
+      "posterPath": "../images/A_Unique_Movie.jpg",
+      "originalLanguage": "ko",
+      "originalTitle": "특이점이 온 영화",
+      "adult": false,
+      "overview": "Ep.01 My wife healing ",
+      "releaseDate": "2017-03-07"
     },
     {
-      "id": "02",
-      "title": "Movie 02",
-      "description": "Movie Description 02",
-      "posterPath": "./public/js/image02.jpg"
-    },
-    {
-      "id": "04",
-      "title": "Movie 04",
-      "description": "Movie Description 04",
-      "posterPath": "./public/js/image04.jpg"
-    },
-    {
-      "id": "03",
-      "title": "Movie 03",
-      "description": "Movie Description 03",
-      "posterPath": "./public/js/image03.jpg"
-    },
-    {
-      "id": "06",
-      "title": "Movie 06",
-      "description": "Movie Description 06",
-      "posterPath": "./public/js/image06.jpg"
+      "voteCount": 0,
+      "id": 476307,
+      "video": false,
+      "voteAverage": 0,
+      "title": "The Unique Lama",
+      "popularity": 1,
+      "posterPath": "../images/The_Unique_Lama.jpg",
+      "originalLanguage": "zh",
+      "originalTitle": "Da la ma",
+      "adult": false,
+      "overview": "The Unique Lama is a 1978 Wuxia film from Taiwan",
+      "releaseDate": "1978-09-15"
     }
   ]
 }

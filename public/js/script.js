@@ -34,7 +34,7 @@ function parseListOfAllMovies(listOfMovies) {
 			let innerContent = `
 				<li id='${element.id}'>
 					<span>${element.title}</span>
-					<button id='addMovieButton' type='button' class='btn btn-link' value='${element.id}' onclick="addFavourite('${element.id}')">
+					<button id='addMovieButton' type='button' class='btn btn-link' onclick="addFavourite(${element.id})">
 						Add to Fav
 					</button>
 				</li>
