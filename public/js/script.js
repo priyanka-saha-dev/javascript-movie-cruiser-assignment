@@ -49,7 +49,7 @@ function parseListOfAllMovies(listOfMovies) {
 function getFavourites() {
 
 	let favDataPromise = fetch(favuoriteAPI_url, {
-		method: 'get'
+		method: 'GET'
 	}).then(response => response.json());
 
 	favDataPromise
@@ -97,17 +97,17 @@ function displayFavourites() {
 }
 
 function getMovieByID(movieID) {
-	console.log(`Movie ID = ${movieID}`);
-
+	//console.log(`Movie ID = ${movieID}`);
+	let selectedMovie;
 	if (movieID) {
 		selectedMovie = globalMovieList.find(element => {
 			return element.id === movieID;
 		});
 
-		if (selectedMovie) {
-			console.log(`adding movie to fav`)
-			console.log(selectedMovie.id)
-		}
+		// if (selectedMovie) {
+		// 	console.log(`adding movie to fav`)
+		// 	console.log(selectedMovie.id)
+		// }
 	}
 
 	return selectedMovie;
@@ -152,8 +152,6 @@ function addFavourite(movieID) {
 }
 
 function removeFavourite(movieID) {
-	console.log(`Movie ID = ${movieID}`);
-
 	let selectedMovie = getMovieByID(movieID);
 	let isAlreadyPresent = false;
 
@@ -166,32 +164,14 @@ function removeFavourite(movieID) {
 		}
 	}
 
-	if (!isAlreadyPresent) {
+	if (!selectedMovie || !isAlreadyPresent) {
 		return Promise.reject(new Error(errorMsg2));
 	}
 
 	let favDataDeletePromise = fetch(`${favuoriteAPI_url}/${movieID}`, {
 		method: 'DELETE'
 	})
-		.then((response) => response.json())
-		.then((favItem) => {
-			let itemIndex;
-
-			let found = globalFavMovieList.find((element, position) => {
-				if (element.id === movieID) {
-					itemIndex = position;
-				}
-				return element.id === movieID;
-			});
-			console.log(`index = ${itemIndex}`);
-
-			if (itemIndex && found) {
-				globalFavMovieList.splice(itemIndex, 1);
-				displayFavourites();
-			}
-			
-			return globalFavMovieList;
-		})
+		.then(getFavourites)
 		.catch(parseError);
 
 	return favDataDeletePromise;
