@@ -34,10 +34,17 @@ function parseListOfAllMovies(listOfMovies) {
 
 			let innerContent = `
 				<li id='${element.id}'>
-					<span>${element.title}</span>
-					<button id='addMovieButton' type='button' class='btn btn-link' onclick="addFavourite(${element.id})">
-						Add to Fav
-					</button>
+					<div>
+						<div class='center-align'>
+							<span>${element.title}</span>
+							<button id='addMovieButton' type='button' class='btn btn-link' onclick="addFavourite(${element.id})">
+								Add to Fav
+							</button>
+						</div>
+						<div class='center-align'>
+							<img src='${element.posterPath}' class='img-rounded img-fluid img-thumbnail' alt='${element.overview}'> 
+						</div>
+					</div>
 				</li>
 			`;
 
@@ -84,10 +91,17 @@ function displayFavourites() {
 
 			let innerContent = `
 				<li id='${element.id}'>
-					<span>${element.title}</span>
-					<button id='removeMovieButton' type='button' class='btn btn-link' onclick='removeFavourite(${element.id})'>
-						Remove
-					</button>
+					<div>
+						<div class='center-align'>
+							<span>${element.title}</span>
+							<button id='removeMovieButton' type='button' class='btn btn-link' onclick='removeFavourite(${element.id})'>
+								Remove
+							</button>
+						</div>
+						<div class='center-align'>
+							<img src='${element.posterPath}' class='img-rounded img-fluid img-thumbnail' alt='${element.overview}'> 
+						</div>
+					</div>
 				</li>
 			`;
 

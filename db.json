@@ -1,46 +1,28 @@
 {
   "movies": [
     {
-      "voteCount": 0,
-      "id": 476307,
-      "video": false,
-      "voteAverage": 0,
-      "title": "The Unique Lama",
-      "popularity": 1,
-      "posterPath": "../images/The_Unique_Lama.jpg",
-      "originalLanguage": "zh",
-      "originalTitle": "Da la ma",
-      "adult": false,
-      "overview": "The Unique Lama is a 1978 Wuxia film from Taiwan",
-      "releaseDate": "1978-09-15"
+      "id": 1,
+      "title": "The Avengers",
+      "posterPath": "../images/the_avengers.jpeg",
+      "originalLanguage": "en",
+      "overview": "S.H.I.E.L.D. leader Nick Fury is compelled to launch the Avengers Initiative when Loki poses a threat to planet Earth. His squad of superheroes put their minds together to accomplish the task.",
+      "releaseDate": "2012-04-27"
     },
     {
-      "voteCount": 74,
-      "id": 27621,
-      "video": false,
-      "voteAverage": 5,
-      "title": "The Cheetah Girls: One World",
-      "popularity": 5.000945,
-      "posterPath": "../images/The_Cheetah_Girls.jpg",
+      "id": 2,
+      "title": "Avengers: Age of Ultron",
+      "posterPath": "../images/avengers_age_of_ultron.jpeg",
       "originalLanguage": "en",
-      "originalTitle": "The Cheetah Girls: One World",
-      "adult": false,
-      "overview": "Chanel, Dorinda, and Aqua, are off to India to star in a Bollywood movie. ",
-      "releaseDate": "2008-08-22"
+      "overview": "Tony Stark builds an artificial intelligence system named Ultron with the help of Bruce Banner. When the sentient Ultron makes plans to wipe out the human race, the Avengers set out to stop him.",
+      "releaseDate": "2015-04-24"
     },
     {
-      "voteCount": 0,
-      "id": 142109,
-      "video": false,
-      "voteAverage": 0,
-      "title": "Unique 8",
-      "popularity": 1.007201,
-      "posterPath": "/images/Unique_8.jpg",
+      "id": 3,
+      "title": "Avengers: Infinity War",
+      "posterPath": "../images/avengers_infinity_war.jpeg",
       "originalLanguage": "en",
-      "originalTitle": "Unique 8",
-      "adult": false,
-      "overview": "We are back with our new 2012 snowboard film release, UNIQUE 8!",
-      "releaseDate": "2012-01-01"
+      "overview": "Iron Man, Thor, the Hulk and the rest of the Avengers unite to battle their most powerful enemy yet -- the evil Thanos. On a mission to collect all six Infinity Stones, Thanos plans to use the artifacts to inflict his twisted will on reality. The fate of the planet and existence itself has never been more uncertain as everything the Avengers have fought for has led up to this moment.",
+      "releaseDate": "2018-04-27"
     }
   ],
   "favourites": []
